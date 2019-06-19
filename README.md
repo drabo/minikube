@@ -1,6 +1,35 @@
 # Install Kubernetes local cluster with Minkube #
 
-<!-- TOC -->- [Install Kubernetes local cluster with Minkube](#install-kubernetes-local-cluster-with-minkube)    - [1. Windows](#1-windows)        - [1.1. Use Cygwin in Windows](#11-use-cygwin-in-windows)            - [1.1.1. Install Minikube](#111-install-minikube)            - [1.1.2. Install Kubectl](#112-install-kubectl)            - [1.1.3. Install Helm and Tiller](#113-install-helm-and-tiller)            - [1.1.4. Common configuration](#114-common-configuration)            - [1.1.5. Create the Kubernetes cluster with Minikube](#115-create-the-kubernetes-cluster-with-minikube)            - [1.1.6. Modify optins to the minikube cluster](#116-modify-optins-to-the-minikube-cluster)            - [1.1.7. Explore the cluster](#117-explore-the-cluster)                - [1.1.7.1. Use CLI to explore cluster](#1171-use-cli-to-explore-cluster)                - [1.1.7.2. Use GUI to explore cluster](#1172-use-gui-to-explore-cluster)            - [1.1.8. Prepare Helm to deploy software into the cluster created](#118-prepare-helm-to-deploy-software-into-the-cluster-created)            - [1.1.9. Start/Stop cluster](#119-startstop-cluster)            - [1.1.10. Other minikube commands](#1110-other-minikube-commands)        - [1.2. Use the Windows Subsystem for Linux (WSL) in Windows 10](#12-use-the-windows-subsystem-for-linux-wsl-in-windows-10)            - [1.2.1. Install Minikube](#121-install-minikube)            - [1.2.2. Install Kubectl](#122-install-kubectl)            - [1.2.3. Install Helm and Tiller](#123-install-helm-and-tiller)            - [1.2.4. Common configuration](#124-common-configuration)            - [1.2.5. Create the Kubernetes cluster with Minikube](#125-create-the-kubernetes-cluster-with-minikube)            - [1.2.6. Modify optins to the minikube cluster](#126-modify-optins-to-the-minikube-cluster)            - [1.2.7. Explore the cluster](#127-explore-the-cluster)            - [1.2.8. Prepare Helm to deploy software into the cluster created](#128-prepare-helm-to-deploy-software-into-the-cluster-created)            - [1.2.9. Start/Stop cluster](#129-startstop-cluster)            - [1.2.10. Other minikube commands](#1210-other-minikube-commands)    - [2. Linux](#2-linux)<!-- /TOC -->
+## Content ##
+
+[1. Windows](#1-windows)
+
+- [1.1. Use Cygwin in Windows](#11-use-cygwin-in-windows)
+  - [1.1.1. Install Minikube](#111-install-minikube)
+  - [1.1.2. Install Kubectl](#112-install-kubectl)
+  - [1.1.3. Install Helm and Tiller](#113-install-helm-and-tiller)
+  - [1.1.4. Common configuration](#114-common-configuration)
+  - [1.1.5. Create the Kubernetes cluster with Minikube](#115-create-the-kubernetes-cluster-with-minikube)
+  - [1.1.6. Modify optins to the minikube cluster](#116-modify-optins-to-the-minikube-cluster)
+  - [1.1.7. Explore the cluster](#117-explore-the-cluster)
+    - [1.1.7.1. Use CLI to explore cluster](#1171-use-cli-to-explore-cluster)
+    - [1.1.7.2. Use GUI to explore cluster](#1172-use-gui-to-explore-cluster)
+  - [1.1.8. Prepare Helm to deploy software into the cluster created](#118-prepare-helm-to-deploy-software-into-the-cluster-created)
+  - [1.1.9. Start/Stop cluster](#119-startstop-cluster)
+  - [1.1.10. Other minikube commands](#1110-other-minikube-commands)
+- [1.2. Use the Windows Subsystem for Linux (WSL) in Windows 10](#12-use-the-windows-subsystem-for-linux-wsl-in-windows-10)
+  - [1.2.1. Install Minikube](#121-install-minikube)
+  - [1.2.2. Install Kubectl](#122-install-kubectl)
+  - [1.2.3. Install Helm and Tiller](#123-install-helm-and-tiller)
+  - [1.2.4. Common configuration](#124-common-configuration)
+  - [1.2.5. Create the Kubernetes cluster with Minikube](#125-create-the-kubernetes-cluster-with-minikube)
+  - [1.2.6. Modify optins to the minikube cluster](#126-modify-optins-to-the-minikube-cluster)
+  - [1.2.7. Explore the cluster](#127-explore-the-cluster)
+  - [1.2.8. Prepare Helm to deploy software into the cluster created](#128-prepare-helm-to-deploy-software-into-the-cluster-created)
+  - [1.2.9. Start/Stop cluster](#129-startstop-cluster)
+  - [1.2.10. Other minikube commands](#1210-other-minikube-commands)
+
+[2. Linux](#2-linux)
 
 In the following document you will find several terms like:
 
