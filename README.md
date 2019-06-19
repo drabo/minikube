@@ -87,7 +87,7 @@ Client Version: version.Info{Major:"1", Minor:"14", GitVersion:"v1.14.0", GitCom
 Unable to connect to the server: dial tcp 127.0.0.1:8080: connectex: No connection could be made because the target machine actively refused it.
 ```
 
-kubectl shows only the client information because the server relates to the Kubernetes that is still not created.
+kubectl showed only the client information because the server relates to the Kubernetes cluster that is still not created.
 
 ```shell
 $ helm version
@@ -95,7 +95,7 @@ Client: &version.Version{SemVer:"v2.14.1", GitCommit:"5270352a09c7e8b6e8c9593002
 Error: Get http://localhost:8080/api/v1/namespaces/kube-system/pods?labelSelector=app%3Dhelm%2Cname%3Dtiller: dial tcp 127.0.0.1:8080: connectex: No connection could be made because the target machine actively refused it.
 ```
 
-As well, helm shows only the client information.
+As well, helm showed only the client information.
 
 ```shell
 $ tiller version
@@ -107,7 +107,7 @@ $ tiller version
 Ctrl+C
 ```
 
-Tiller will start the server on localhost. You may cancel it.
+Tiller started the server on localhost. You may cancel it.
 
 #### 5. Create the Kubernetes cluster with Minikube ####
 
@@ -117,7 +117,7 @@ The local cluster may be created with the same command that will later start it:
 minikube start
 ```
 
-This will create a VirtualBox machine with 2 CPU, 4GB RAM and 20GB disk.
+This command will create a VirtualBox machine with 2 CPU, 4GB RAM and 20GB disk.
 
 You may use this config or you may enhance it. You may edit the script [0.minikube-create.sh](0.minikube-create.sh) to modify the resources or to set a local Docker repository IP address, that may be Nexus.
 
@@ -154,7 +154,7 @@ Server Version: version.Info{Major:"1", Minor:"14", GitVersion:"v1.14.3", GitCom
 There are 2 optins that should be enabled:
 
 - dashboard - a GUI to browse and manage components of the cluster
-- ingress - a functionality of Kubernetes that allow to expose the services running in the cluster as DNS names
+- ingress - a functionality of Kubernetes that allow to expose the services running in the cluster with DNS names
 
 Both these options are provided as 'addons' in Minikube.
 
@@ -186,7 +186,7 @@ The script [1.minikube-update.sh](1.minikube-update.sh) may be modified and used
 ./1.minikube-update.sh
 ```
 
-#### 7. Explore the cluster created ####
+#### 7. Explore the cluster ####
 
 ##### 7.1. Use CLI to explore cluster #####
 
@@ -198,7 +198,7 @@ NAME       STATUS   ROLES    AGE   VERSION
 minikube   Ready    master   1d    v1.14.3
 ```
 
-This shows the only node composing the cluster.
+This showed the only node composing the cluster.
 
 ```shell
 $ kubectl get all
@@ -206,7 +206,7 @@ NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   58d
 ```
 
-This shows all components in the default namespace.
+This showed all components in the default namespace.
 
 ##### 7.2. Use GUI to explore cluster #####
 
@@ -224,7 +224,7 @@ In order for Helm to be able to install software packages into your Kubernetes c
 ./2.helm-init.sh
 ```
 
-Tiller should be deployed into the cluster and the above script should return similar output:
+Tiller is deployed into the cluster and the above script will return an output like:
 
 ```shell
 NAME            TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)     AGE
@@ -241,9 +241,9 @@ In this moment your Kubernetes local cluster should be up and running an ready t
 
 #### 9. Start/Stop cluster ####
 
-:exclamation: The cluster will be started and stopped **ONLY** using minikube CLI tool.
-
-:exclamation: **Do not** start or stop the VM using VirtualBox.
+>:exclamation: The cluster will be started and stopped **ONLY** using minikube CLI tool.
+>
+>:exclamation: **Do not** start or stop the VM using VirtualBox.
 
 The cluster will be started with:
 
@@ -286,4 +286,4 @@ minikube ssh
 
 Will login to the VM with user docker. The user has sudo rights.
 
-:exclamation: **Do not** modify anything into the VirtualBox VM otherwise the cluster may not be usable anymore.
+>:exclamation: **Do not** modify anything into the VirtualBox VM otherwise the cluster may not be usable anymore.
