@@ -1,8 +1,6 @@
 # Install Kubernetes local cluster with Minkube #
   
-  
 ## Content ##
-  
   
 [1. Windows](#1-windows )
   
