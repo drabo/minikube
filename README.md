@@ -26,9 +26,9 @@ You will need 4 tools to create and manage the Minikube Kubernetes cluster:
 
 Minikube is the CLI tool to create and manage the virtual machine used by Kubernetes.
 
-Go to the page [https://github.com/kubernetes/minikube/releases/latest]
+Go to the page https://github.com/kubernetes/minikube/releases/latest
 
-You may identify at the bottom the package for Windows: `minikube-windows-amd64.exe`. Copy the link of the file and use it below to set the variable MINIKUBELINK:
+At the bottom of the page you may identify the package for Windows: `minikube-windows-amd64.exe`. Copy the link of the file and use it below to set the variable MINIKUBELINK:
 
 ```shell
 MINIKUBELINK=https://github.com/kubernetes/minikube/releases/download/v1.1.1/minikube-windows-amd64.exe
@@ -81,13 +81,15 @@ $ minikube version
 minikube version: v1.1.1
 ```
 
+Kubectl shows only the client information because the server relates to the Kubernetes cluster that is still not created:
+
 ```shell
 $ kubectl version
 Client Version: version.Info{Major:"1", Minor:"14", GitVersion:"v1.14.0", GitCommit:"641856db18352033a0d96dbc99153fa3b27298e5", GitTreeState:"clean", BuildDate:"2019-03-25T15:53:57Z", GoVersion:"go1.12.1", Compiler:"gc", Platform:"windows/amd64"}
 Unable to connect to the server: dial tcp 127.0.0.1:8080: connectex: No connection could be made because the target machine actively refused it.
 ```
 
-kubectl showed only the client information because the server relates to the Kubernetes cluster that is still not created.
+As well, helm shows only the client information:
 
 ```shell
 $ helm version
@@ -95,7 +97,7 @@ Client: &version.Version{SemVer:"v2.14.1", GitCommit:"5270352a09c7e8b6e8c9593002
 Error: Get http://localhost:8080/api/v1/namespaces/kube-system/pods?labelSelector=app%3Dhelm%2Cname%3Dtiller: dial tcp 127.0.0.1:8080: connectex: No connection could be made because the target machine actively refused it.
 ```
 
-As well, helm showed only the client information.
+Tiller starts the server on localhost. You may cancel it.
 
 ```shell
 $ tiller version
@@ -107,8 +109,6 @@ $ tiller version
 Ctrl+C
 ```
 
-Tiller started the server on localhost. You may cancel it.
-
 #### 5. Create the Kubernetes cluster with Minikube ####
 
 The local cluster may be created with the same command that will later start it:
@@ -119,11 +119,11 @@ minikube start
 
 This command will create a VirtualBox machine with 2 CPU, 4GB RAM and 20GB disk.
 
-You may use this config or you may enhance it. You may edit the script [0.minikube-create.sh](0.minikube-create.sh) to modify the resources or to set a local Docker repository IP address, that may be Nexus.
+You may use this config or you may enhance it according to your needs. You may edit the script [0.minikube-create.sh](0.minikube-create.sh) to modify the resources or to set a local Docker repository IP address, that may be Nexus.
 
-If you intend to use such local Docker repo then you **must** specify it at the minikube cluster creation as a later update of this element will not be possible.
+If you intend to use such local Docker repo then you **must** specify it at the minikube cluster creation time because a later update of this element will not be possible.
 
-So, edit the script [0.minikube-create.sh](0.minikube-create.sh) according to your needs and run it:
+Edit the script [0.minikube-create.sh](0.minikube-create.sh) according to your needs and run it:
 
 ```shell
 ./0.minikube-create.sh
@@ -153,7 +153,7 @@ Server Version: version.Info{Major:"1", Minor:"14", GitVersion:"v1.14.3", GitCom
 
 There are 2 optins that should be enabled:
 
-- dashboard - a GUI to browse and manage components of the cluster
+- dashboard - a GUI to browse and manage components of the Kubernetes cluster
 - ingress - a functionality of Kubernetes that allow to expose the services running in the cluster with DNS names
 
 Both these options are provided as 'addons' in Minikube.
@@ -192,21 +192,21 @@ The script [1.minikube-update.sh](1.minikube-update.sh) may be modified and used
 
 The CLI tool kubectl is used to explore and manage the cluster
 
+The following will show the only node composing the cluster:
+
 ```shell
 $ kubectl get nodes
 NAME       STATUS   ROLES    AGE   VERSION
 minikube   Ready    master   1d    v1.14.3
 ```
 
-This showed the only node composing the cluster.
+The following will show all components in the default namespace:
 
 ```shell
 $ kubectl get all
 NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   58d
 ```
-
-This showed all components in the default namespace.
 
 ##### 7.2. Use GUI to explore cluster #####
 
@@ -245,13 +245,13 @@ In this moment your Kubernetes local cluster should be up and running an ready t
 >
 >:exclamation: **Do not** start or stop the VM using VirtualBox.
 
-The cluster will be started with:
+- The cluster will be started with:
 
 ```shell
 minikube start
 ```
 
-The cluster will be stopped with:
+- The cluster will be stopped with:
 
 ```shell
 minikube stop
@@ -267,23 +267,25 @@ minikube
 
 However, following few useful comands follows:
 
+- Display the IP address of the Kubernetes minikube VM.
+
 ```shell
 $ minikube ip
 192.168.99.100
 ```
 
-Display the IP address of the Kubernetes minikube VM. Your computer has the IP address 192.168.99.1 within the network 192.168.99.0/24 created by minikube in VirtualBox.
+Your computer has the IP address 192.168.99.1 within the network 192.168.99.0/24 created by minikube in VirtualBox.
+
+- Display the logs of cluster components.
 
 ```shell
 minikube logs
 ```
 
-Display the logs of cluster components.
+- Login to the VM with user docker. The user has sudo rights.
 
 ```shell
 minikube ssh
 ```
-
-Will login to the VM with user docker. The user has sudo rights.
 
 >:exclamation: **Do not** modify anything into the VirtualBox VM otherwise the cluster may not be usable anymore.
