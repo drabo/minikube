@@ -50,7 +50,7 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s htt
 
 Helm is the CLI tool to install software packages that exists in Helm library. Tiller keeps track of the packages installed.
 
-Got to page https://github.com/helm/helm/releases/latest and identify the dowload link of package `Windows amd64` within section **Installation and Upgrading** of the page. Copy the link of the file and use it below to set the variable HELMLINK:
+Got to page https://github.com/helm/helm/releases/latest and identify the download link of package `Windows amd64` within section **Installation and Upgrading** of the page. Copy the link of the file and use it below to set the variable HELMLINK:
 
 ```shell
 HELMLINK=https://get.helm.sh/helm-v2.14.1-windows-amd64.zip
