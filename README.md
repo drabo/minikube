@@ -387,13 +387,30 @@ Ctrl+C
 
 #### 1.2.5. Create the Kubernetes cluster with Minikube ####
 
+Same as in the [Windows section](#115-create-the-kubernetes-cluster-with-minikube)
+
 #### 1.2.6. Modify optins to the minikube cluster ####
+
+Same as in the [Windows section](#116-modify-optins-to-the-minikube-cluster)
 
 #### 1.2.7. Explore the cluster ####
 
+Same as in the [Windows section](#117-explore-the-cluster)
+
 #### 1.2.8. Prepare Helm to deploy software into the cluster created ####
+
+Same as in the [Windows section](#118-prepare-helm-to-deploy-software-into-the-cluster-created)
 
 #### 1.2.9. Start/Stop cluster ####
 
+Same as in the [Windows section](#119-startstop-cluster)
+
 #### 1.2.10. Other minikube commands ####
 
+Same as in the [Windows section](#1110-other-minikube-commands)
+
+## 2. Linux ##
+
+The Minikube Kubernetes cluster will be created as a virtual machine in VirtualBox, so, make sure you have it installed.
+
+The installation steps are identical as for the Windows Subsystem for Linux (WSL) in Windows 10. See above [section]
