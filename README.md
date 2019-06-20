@@ -343,7 +343,6 @@ At the bottom of the page you may identify the package for Windows: `minikube-li
 ```shell
 MINIKUBELINK=https://github.com/kubernetes/minikube/releases/download/v1.1.1/minikube-linux-amd64
 
-
 curl -Lo minikube $MINIKUBELINK && chmod +x minikube && mv minikube /usr/local/bin/
 ```
 
@@ -366,7 +365,7 @@ Got to page https://github.com/helm/helm/releases/latest and identify the downlo
 ```shell
 HELMLINK=https://get.helm.sh/helm-v2.14.1-linux-amd64.tar.gz
 
-curl -LO $HELMLINK && tar -xf $(basename $HELMLINK) && chmod +x linux-amd64/*.exe && mv linux-amd64/{helm,tiller} /usr/local/bin/
+curl -LO $HELMLINK && tar -xf $(basename $HELMLINK) && chmod +x linux-amd64/{helm,tiller} && mv linux-amd64/{helm,tiller} /usr/local/bin/
 ```
 
 #### 1.2.4. Common configuration ####
