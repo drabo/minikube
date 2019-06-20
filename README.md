@@ -296,7 +296,7 @@ You will get all options of minikube if you run:
 minikube
 ```
 
-However, following few useful comands follows:
+Few useful comands follows:
 
 - Display the IP address of the Kubernetes minikube VM.
 
