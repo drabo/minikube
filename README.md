@@ -31,7 +31,7 @@ Go to the page https://github.com/kubernetes/minikube/releases/latest
 At the bottom of the page you may identify the package for Windows: `minikube-windows-amd64.exe`. Copy the link of the file and use it below to set the variable MINIKUBELINK:
 
 ```shell
-MINIKUBELINK=https://github.com/kubernetes/minikube/releases/download/v1.1.1/minikube-windows-amd64.exe
+MINIKUBELINK=https://github.com/kubernetes/minikube/releases/download/v1.2.0/minikube-windows-amd64.exe
 
 curl -Lo minikube.exe $MINIKUBELINK && chmod +x minikube.exe && mv minikube.exe /usr/local/bin/
 ```
@@ -79,7 +79,7 @@ Close the terminal and reopen it in order to execute the above commands. Check f
 ```shell
 $ minikube version
 
-minikube version: v1.1.1
+minikube version: v1.2.0
 ```
 
 Kubectl shows only the client information because the server relates to the Kubernetes cluster that is still not created:
@@ -322,7 +322,7 @@ Go to the page https://github.com/kubernetes/minikube/releases/latest
 At the bottom of the page you may identify the package for Windows: `minikube-linux-amd64`. Copy the link of the file and use it below to set the variable MINIKUBELINK:
 
 ```shell
-MINIKUBELINK=https://github.com/kubernetes/minikube/releases/download/v1.1.1/minikube-linux-amd64
+MINIKUBELINK=https://github.com/kubernetes/minikube/releases/download/v1.2.0/minikube-linux-amd64
 
 curl -Lo minikube $MINIKUBELINK && chmod +x minikube && mv minikube /usr/local/bin/
 ```
@@ -366,7 +366,7 @@ Close the terminal and reopen it in order to execute the above commands. Check f
 ```shell
 $ minikube version
 
-minikube version: v1.1.1
+minikube version: v1.2.0
 ```
 
 Kubectl shows only the client information because the server relates to the Kubernetes cluster that is still not created:
