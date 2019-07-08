@@ -10,6 +10,6 @@ fi
 
 minikube start \
     --cpus 2 \
-    --memory 6144 \
+    --memory 8192 \
     --disk-size 30g \
     $REPO_OPT
