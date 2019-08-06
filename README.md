@@ -26,7 +26,7 @@ You will need 4 tools to create and manage the Minikube Kubernetes cluster:
 
 Minikube is the CLI tool to create and manage the virtual machine used by Kubernetes.
 
-Go to the page [https://github.com/kubernetes/minikube/releases/latest](https://github.com/kubernetes/minikube/releases/latest){:target="_blank"}
+Go to the page https://github.com/kubernetes/minikube/releases/latest
 
 At the bottom of the page you may identify the package for Windows: `minikube-windows-amd64.exe`. Copy the link of the file and use it below to set the variable MINIKUBELINK:
 
