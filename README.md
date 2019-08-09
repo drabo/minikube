@@ -31,7 +31,7 @@ Go to the <a href="https://github.com/kubernetes/minikube/releases/latest" targe
 At the bottom of the page you may identify the package for Windows: `minikube-windows-amd64.exe`. Copy the link of the file and use it below to set the variable MINIKUBELINK:
 
 ```shell
-MINIKUBELINK=https://github.com/kubernetes/minikube/releases/download/v1.2.0/minikube-windows-amd64.exe
+MINIKUBELINK=https://github.com/kubernetes/minikube/releases/download/v1.3.0/minikube-windows-amd64.exe
 
 curl -Lo minikube.exe $MINIKUBELINK && chmod +x minikube.exe && mv minikube.exe /usr/local/bin/
 ```
@@ -53,7 +53,7 @@ Helm is the CLI tool to install software packages that exists in Helm library. T
 Got to page https://github.com/helm/helm/releases/latest and identify the download link of package `Windows amd64` within section **Installation and Upgrading** of the page. Copy the link of the file and use it below to set the variable HELMLINK:
 
 ```shell
-HELMLINK=https://get.helm.sh/helm-v2.14.1-windows-amd64.zip
+HELMLINK=https://get.helm.sh/helm-v2.14.3-windows-amd64.zip
 
 curl -LO $HELMLINK && unzip $(basename $HELMLINK) && chmod +x windows-amd64/*.exe && mv windows-amd64/*.exe /usr/local/bin/
 ```
@@ -79,7 +79,7 @@ Close the terminal and reopen it in order to execute the above commands. Check f
 ```shell
 $ minikube version
 
-minikube version: v1.2.0
+minikube version: v1.3.0
 ```
 
 Kubectl shows only the client information because the server relates to the Kubernetes cluster that is still not created:
@@ -87,7 +87,7 @@ Kubectl shows only the client information because the server relates to the Kube
 ```shell
 $ kubectl version
 
-Client Version: version.Info{Major:"1", Minor:"14", GitVersion:"v1.14.0", GitCommit:"641856db18352033a0d96dbc99153fa3b27298e5", GitTreeState:"clean", BuildDate:"2019-03-25T15:53:57Z", GoVersion:"go1.12.1", Compiler:"gc", Platform:"windows/amd64"}
+Client Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.2", GitCommit:"641856db18352033a0d96dbc99153fa3b27298e5", GitTreeState:"clean", BuildDate:"2019-03-25T15:53:57Z", GoVersion:"go1.12.1", Compiler:"gc", Platform:"windows/amd64"}
 Unable to connect to the server: dial tcp 127.0.0.1:8080: connectex: No connection could be made because the target machine actively refused it.
 ```
 
@@ -96,7 +96,7 @@ As well, helm shows only the client information:
 ```shell
 $ helm version
 
-Client: &version.Version{SemVer:"v2.14.1", GitCommit:"5270352a09c7e8b6e8c9593002a73535276507c0", GitTreeState:"clean"}
+Client: &version.Version{SemVer:"v2.14.3", GitCommit:"5270352a09c7e8b6e8c9593002a73535276507c0", GitTreeState:"clean"}
 Error: Get http://localhost:8080/api/v1/namespaces/kube-system/pods?labelSelector=app%3Dhelm%2Cname%3Dtiller: dial tcp 127.0.0.1:8080: connectex: No connection could be made because the target machine actively refused it.
 ```
 
@@ -105,7 +105,7 @@ Tiller starts the server on localhost. You may cancel it.
 ```shell
 $ tiller version
 
-[main] 2019/06/19 00:37:34 Starting Tiller v2.14.1 (tls=false)
+[main] 2019/06/19 00:37:34 Starting Tiller v2.14.3 (tls=false)
 [main] 2019/06/19 00:37:34 GRPC listening on :44134
 [main] 2019/06/19 00:37:34 Probes listening on :44135
 [main] 2019/06/19 00:37:34 Storage driver is ConfigMap
@@ -151,8 +151,8 @@ After the cluster is created, kubectl will show also the server version:
 ```shell
 $ kubectl version
 
-Client Version: version.Info{Major:"1", Minor:"14", GitVersion:"v1.14.0", GitCommit:"641856db18352033a0d96dbc99153fa3b27298e5", GitTreeState:"clean", BuildDate:"2019-03-25T15:53:57Z", GoVersion:"go1.12.1", Compiler:"gc", Platform:"windows/amd64"}
-Server Version: version.Info{Major:"1", Minor:"14", GitVersion:"v1.14.3", GitCommit:"5e53fd6bc17c0dec8434817e69b04a25d8ae0ff0", GitTreeState:"clean", BuildDate:"2019-06-06T01:36:19Z", GoVersion:"go1.12.5", Compiler:"gc", Platform:"linux/amd64"}
+Client Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.2", GitCommit:"641856db18352033a0d96dbc99153fa3b27298e5", GitTreeState:"clean", BuildDate:"2019-03-25T15:53:57Z", GoVersion:"go1.12.1", Compiler:"gc", Platform:"windows/amd64"}
+Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.2", GitCommit:"5e53fd6bc17c0dec8434817e69b04a25d8ae0ff0", GitTreeState:"clean", BuildDate:"2019-06-06T01:36:19Z", GoVersion:"go1.12.5", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
 #### 1.1.6. Modify optins to the minikube cluster ####
@@ -322,7 +322,7 @@ Go to the page https://github.com/kubernetes/minikube/releases/latest
 At the bottom of the page you may identify the package for Windows: `minikube-linux-amd64`. Copy the link of the file and use it below to set the variable MINIKUBELINK:
 
 ```shell
-MINIKUBELINK=https://github.com/kubernetes/minikube/releases/download/v1.2.0/minikube-linux-amd64
+MINIKUBELINK=https://github.com/kubernetes/minikube/releases/download/v1.3.0/minikube-linux-amd64
 
 curl -Lo minikube $MINIKUBELINK && chmod +x minikube && mv minikube /usr/local/bin/
 ```
@@ -344,7 +344,7 @@ Helm is the CLI tool to install software packages that exists in Helm library. T
 Got to page https://github.com/helm/helm/releases/latest and identify the download link of package `Linux amd64` within section **Installation and Upgrading** of the page. Copy the link of the file and use it below to set the variable HELMLINK:
 
 ```shell
-HELMLINK=https://get.helm.sh/helm-v2.14.1-linux-amd64.tar.gz
+HELMLINK=https://get.helm.sh/helm-v2.14.3-linux-amd64.tar.gz
 
 curl -LO $HELMLINK && tar -xf $(basename $HELMLINK) && chmod +x linux-amd64/{helm,tiller} && mv linux-amd64/{helm,tiller} /usr/local/bin/
 ```
@@ -366,7 +366,7 @@ Close the terminal and reopen it in order to execute the above commands. Check f
 ```shell
 $ minikube version
 
-minikube version: v1.2.0
+minikube version: v1.3.0
 ```
 
 Kubectl shows only the client information because the server relates to the Kubernetes cluster that is still not created:
@@ -374,7 +374,7 @@ Kubectl shows only the client information because the server relates to the Kube
 ```shell
 $ kubectl version
 
-Client Version: version.Info{Major:"1", Minor:"14", GitVersion:"v1.14.0", GitCommit:"641856db18352033a0d96dbc99153fa3b27298e5", GitTreeState:"clean", BuildDate:"2019-03-25T15:53:57Z", GoVersion:"go1.12.1", Compiler:"gc", Platform:"windows/amd64"}
+Client Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.2", GitCommit:"641856db18352033a0d96dbc99153fa3b27298e5", GitTreeState:"clean", BuildDate:"2019-03-25T15:53:57Z", GoVersion:"go1.12.1", Compiler:"gc", Platform:"windows/amd64"}
 Unable to connect to the server: dial tcp 127.0.0.1:8080: connectex: No connection could be made because the target machine actively refused it.
 ```
 
@@ -383,7 +383,7 @@ As well, helm shows only the client information:
 ```shell
 $ helm version
 
-Client: &version.Version{SemVer:"v2.14.1", GitCommit:"5270352a09c7e8b6e8c9593002a73535276507c0", GitTreeState:"clean"}
+Client: &version.Version{SemVer:"v2.14.3", GitCommit:"5270352a09c7e8b6e8c9593002a73535276507c0", GitTreeState:"clean"}
 Error: Get http://localhost:8080/api/v1/namespaces/kube-system/pods?labelSelector=app%3Dhelm%2Cname%3Dtiller: dial tcp 127.0.0.1:8080: connectex: No connection could be made because the target machine actively refused it.
 ```
 
@@ -392,7 +392,7 @@ Tiller starts the server on localhost. You may cancel it.
 ```shell
 $ tiller version
 
-[main] 2019/06/19 00:37:34 Starting Tiller v2.14.1 (tls=false)
+[main] 2019/06/19 00:37:34 Starting Tiller v2.14.3 (tls=false)
 [main] 2019/06/19 00:37:34 GRPC listening on :44134
 [main] 2019/06/19 00:37:34 Probes listening on :44135
 [main] 2019/06/19 00:37:34 Storage driver is ConfigMap
