@@ -79,7 +79,7 @@ Close the terminal and reopen it in order to execute the above commands. Check f
 ```shell
 $ minikube version
 
-minikube version: v1.3.0
+minikube version: v1.3.1
 ```
 
 Kubectl shows only the client information because the server relates to the Kubernetes cluster that is still not created:
