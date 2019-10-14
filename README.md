@@ -31,7 +31,7 @@ Go to the <a href="https://github.com/kubernetes/minikube/releases/latest" targe
 At the bottom of the page you may identify the package for Windows: `minikube-windows-amd64.exe`. Copy the link of the file and use it below to set the variable MINIKUBELINK:
 
 ```shell
-MINIKUBELINK=https://github.com/kubernetes/minikube/releases/download/v1.3.0/minikube-windows-amd64.exe
+MINIKUBELINK=https://github.com/kubernetes/minikube/releases/download/v1.3.1/minikube-windows-amd64.exe
 
 curl -Lo minikube.exe $MINIKUBELINK && chmod +x minikube.exe && mv minikube.exe /usr/local/bin/
 ```
