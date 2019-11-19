@@ -9,7 +9,7 @@ if [[ $USE_REPO -eq 1 ]]; then
 fi
 
 minikube start \
-    --cpus 2 \
-    --memory 8192 \
+    --cpus 4 \
+    --memory 12288 \
     --disk-size 30g \
     $REPO_OPT
