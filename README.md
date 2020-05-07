@@ -429,7 +429,7 @@ Same as in the [Windows section](#1110-other-minikube-commands)
 
 ### 3.1 Fix registry-creds ###
 
-You may find that Replication Controller `registry-creds` is failing to start.
+You may find that Replication Controller `registry-creds` is failing to create the pod.
 
 First, you may check the status of this minikube addon:
 
