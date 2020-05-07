@@ -6,6 +6,7 @@ In the following document you will find several terms like:
 - Minikube cluster
 - Kubernetes local cluster
 - Cluster
+- K8s or k8s
 
 All these terms refer to the same thing that is the Kubernetes cluster containing one node hosted on a local VirtualBox VM, created and managed with the CLI tool called Minikube.
 
@@ -366,7 +367,7 @@ Close the terminal and reopen it in order to execute the above commands. Check f
 ```shell
 $ minikube version
 
-minikube version: v1.3.0
+minikube version: v1.3.1
 ```
 
 Kubectl shows only the client information because the server relates to the Kubernetes cluster that is still not created:
@@ -423,3 +424,128 @@ Same as in the [Windows section](#119-startstop-cluster)
 ### 2.10. Other minikube commands ###
 
 Same as in the [Windows section](#1110-other-minikube-commands)
+
+## 3. Troubleshooting ##
+
+### 3.1 Fix registry-creds ###
+
+You may find that Replication Controller `registry-creds` is failing to start.
+
+First, you may check the status of this minikube addon:
+
+```shell
+$ minikube addons list | grep registry-creds
+- registry-creds: enabled
+```
+
+Assuming that `registry-creds` addon is enabled in minikube but failing to start in K8s, the most probable cause is that the secrets are not created.
+
+`registry-creds` is using 3 secrets for the access to the the following 3 container image repositories:
+
+- AWS ECR
+- Google GCR
+- another repository at your choice
+
+Each of the above has a set of elements that define its secret. If the secrets are not created you may create them with the following commands:
+
+```shell
+kubectl -n kube-system create secret generic registry-creds-ecr
+kubectl -n kube-system create secret generic registry-creds-gcr
+kubectl -n kube-system create secret generic registry-creds-dpr
+```
+
+Now you need to configure the secrets. An easy way is to use minikube for this operation. It will ask each element and will update the secrets for you.
+
+```shell
+$ minikube addons configure registry-creds
+
+Do you want to enable AWS Elastic Container Registry? [y/n]: n
+
+Do you want to enable Google Container Registry? [y/n]: n
+
+Do you want to enable Docker Registry? [y/n]: y
+-- Enter docker registry server url: nexus:8083
+-- Enter docker registry username: yourname
+-- Enter docker registry password: yourpassword
+✅  registry-creds was successfully configured
+```
+
+In the above example is assumed that it will not be configured a repository neither for AWS ECR nor for Google GCR but will be used only a local Nexus server with a Docker repository exposed with HTTPS on port 8083.
+
+After all the above configured you should restart the pod of `registry-creds`.
+
+First, you identify the pod:
+
+```shell
+$ kubectl -n kube-system get po|grep registry-creds
+registry-creds-54llj     1/1     Error   0     93m
+```
+
+Delete the pod and the Replication Controller will recreate it and will load the new secrets that you configured:
+
+```shell
+$ kubectl -n kube-system delete po registry-creds-54llj
+pod "registry-creds-54llj" deleted
+```
+
+Check if the pod was created and is in state `Running`:
+
+```shell
+$ kubectl -n kube-system get po|grep registry-creds
+registry-creds-qntm4     1/1     Running   0     17s
+```
+
+You may see the encoded secret in few ways:
+
+```shell
+kubectl -n kube-system get secret registry-creds-dpr -o jsonpath='{.data}'
+```
+
+or
+
+```shell
+kubectl -n kube-system get secret registry-creds-dpr -o custom-columns=SECRET:.data
+```
+
+In both cases the information returned may look like:
+
+```log
+map[DOCKER_PRIVATE_REGISTRY_PASSWORD:XXXXXXXX== DOCKER_PRIVATE_REGISTRY_SERVER:YYYYYYYY== DOCKER_PRIVATE_REGISTRY_USER:ZZZZZZZZ==]
+```
+
+If you decide to add credentials for AWS ECR secret you have 2 options:
+
+1. first option is to edit the secret `registry-creds-ecr`:
+
+```shell
+kubectl -n kube-system edit secret registry-creds-ecr
+```
+
+Provide the details in the section *data*:
+
+```yaml
+data:
+  AWS_ACCESS_KEY_ID: Y2hhbmdlbWU=
+  AWS_SECRET_ACCESS_KEY: Y2hhbmdlbWU=
+  AWS_SESSION_TOKEN: ""
+  aws-account: Y2hhbmdlbWU=
+  aws-assume-role: Y2hhbmdlbWU=
+  aws-region: Y2hhbmdlbWU=
+```
+
+Each element to be provided in the secret should be previously encoded with base64 as follows:
+
+```shell
+$ echo -n mySecretPassword | base64
+bXlTZWNyZXRQYXNzd29yZA==
+```
+
+Note that you must use `echo -n` otherwise the element will have a `\n` character appended.
+
+2. second option is to run again the command:
+
+```shell
+minikube addons configure registry-creds
+```
+
+and provide all necessary elements.
