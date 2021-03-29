@@ -9,7 +9,9 @@ if [[ $USE_REPO -eq 1 ]]; then
 fi
 
 minikube start \
+    --driver virtualbox \
     --cpus 4 \
-    --memory 12288 \
-    --disk-size 30g \
+    --memory 12gb \
+    --disk-size 40gb \
+    --cni calico \
     $REPO_OPT
