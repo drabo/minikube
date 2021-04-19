@@ -11,7 +11,7 @@ fi
 minikube start \
     --driver virtualbox \
     --cpus 4 \
-    --memory 12gb \
+    --memory 16gb \
     --disk-size 40gb \
     --cni calico \
     $REPO_OPT
