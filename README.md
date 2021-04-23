@@ -549,3 +549,17 @@ minikube addons configure registry-creds
 ```
 
 and provide all necessary elements.
+
+### 3.2 Fix nginx-ingress ###
+
+It is possible in minikube v1.19.0 to get the following error when you deploy an ingress component:
+
+```log
+Error from server (InternalError): error when creating "xxx.yaml": Internal error occurred: failed calling webhook "validate.nginx.ingress.kubernetes.io": an error on the server ("") has prevented the request from succeeding
+```
+
+The cure for he moment is to run the following command:
+
+```shell
+kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
+```
