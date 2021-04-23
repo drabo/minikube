@@ -13,5 +13,5 @@ minikube start \
     --cpus 4 \
     --memory 16gb \
     --disk-size 40gb \
-    --cni calico \
+    --cni flannel \
     $REPO_OPT
