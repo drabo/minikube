@@ -1,7 +1,8 @@
 #!/bin/bash
 
-USE_REPO=1
+K8S_VERSION=v1.19.12
 
+USE_REPO=1
 REPO_IP=192.168.56.156
 
 if [[ $USE_REPO -eq 1 ]]; then
@@ -9,6 +10,7 @@ if [[ $USE_REPO -eq 1 ]]; then
 fi
 
 minikube start \
+    --kubernetes-version $K8S_VERSION \
     --driver virtualbox \
     --cpus 4 \
     --memory 16gb \
