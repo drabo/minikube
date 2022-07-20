@@ -563,3 +563,61 @@ The cure for the moment is to run the following command:
 ```shell
 kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 ```
+
+### 3.3 Fix coredns ###
+
+In some cases you may need to get from a pod to an Internet address. You may discover that the external address is not accessible due to K8s DNS initial settings done by Minikube.
+
+In this case you will have to check the `coredns` configuration with:
+
+```shell
+kubectl -n kube-system edit configmaps coredns
+```
+
+The configmap may look like:
+
+```yaml
+apiVersion: v1
+data:
+  Corefile: |
+    .:53 {
+        errors
+        health {
+           lameduck 5s
+        }
+        ready
+        kubernetes cluster.local in-addr.arpa ip6.arpa {
+           pods insecure
+           fallthrough in-addr.arpa ip6.arpa
+           ttl 30
+        }
+        prometheus :9153
+        hosts {
+           192.168.59.1 host.minikube.internal
+           fallthrough
+        }
+        forward . /etc/resolv.conf {
+           max_concurrent 1000
+        }
+        cache 30
+        loop
+        reload
+        loadbalance
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2022-03-13T15:36:01Z"
+  name: coredns
+  namespace: kube-system
+  resourceVersion: "118724"
+  uid: 679adb8e-37e8-43d4-9a50-5d9721e67cf5
+
+```
+
+All you need is to change the `forward` section as follows:
+
+```yaml
+        forward . 8.8.8.8:53 {
+           max_concurrent 1000
+        }
+```
