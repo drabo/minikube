@@ -1,4 +1,4 @@
-# Install Kubernetes local cluster with Minkube #
+# Install Kubernetes local cluster with Minkube
 
 In the following document you will find several terms like:
 
@@ -10,11 +10,11 @@ In the following document you will find several terms like:
 
 All these terms refer to the same thing that is the Kubernetes cluster containing one node hosted on a local VirtualBox VM, created and managed with the CLI tool called Minikube.
 
-## 1. Install Minikube on Windows ##
+## 1. Install Minikube on Windows
 
 The Minikube Kubernetes cluster will be created as a virtual machine in VirtualBox, so, make sure you have it installed.
 
-### 1.1. Use Cygwin in Windows ###
+### 1.1. Use Cygwin in Windows
 
 You will need 4 tools to create and manage the Minikube Kubernetes cluster:
 
@@ -23,7 +23,7 @@ You will need 4 tools to create and manage the Minikube Kubernetes cluster:
 - helm
 - tiller
 
-#### 1.1.1. Install Minikube ####
+#### 1.1.1. Install Minikube
 
 Minikube is the CLI tool to create and manage the virtual machine used by Kubernetes.
 
@@ -37,7 +37,7 @@ MINIKUBELINK=https://github.com/kubernetes/minikube/releases/download/v1.3.1/min
 curl -Lo minikube.exe $MINIKUBELINK && chmod +x minikube.exe && mv minikube.exe /usr/local/bin/
 ```
 
-#### 1.1.2. Install Kubectl ####
+#### 1.1.2. Install Kubectl
 
 Kubectl is the CLI tool to manage Kubernetes.
 
@@ -47,7 +47,7 @@ Download the Windows executable:
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/windows/amd64/kubectl.exe && chmod +x kubectl.exe && mv kubectl.exe /usr/local/bin/
 ```
 
-#### 1.1.3. Install Helm and Tiller ####
+#### 1.1.3. Install Helm and Tiller
 
 Helm is the CLI tool to install software packages that exists in Helm library. Tiller keeps track of the packages installed.
 
@@ -59,7 +59,7 @@ HELMLINK=https://get.helm.sh/helm-v2.14.3-windows-amd64.zip
 curl -LO $HELMLINK && unzip $(basename $HELMLINK) && chmod +x windows-amd64/*.exe && mv windows-amd64/*.exe /usr/local/bin/
 ```
 
-#### 1.1.4. Common configuration ####
+#### 1.1.4. Common configuration
 
 For the above tools you need to set few symlinks, exports and completion:
 
@@ -114,7 +114,7 @@ $ tiller version
 Ctrl+C
 ```
 
-#### 1.1.5. Create the Kubernetes cluster with Minikube ####
+#### 1.1.5. Create the Kubernetes cluster with Minikube
 
 The local cluster may be created with the same command that will later start it:
 
@@ -156,7 +156,7 @@ Client Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.2", GitCom
 Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.2", GitCommit:"5e53fd6bc17c0dec8434817e69b04a25d8ae0ff0", GitTreeState:"clean", BuildDate:"2019-06-06T01:36:19Z", GoVersion:"go1.12.5", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
-#### 1.1.6. Modify optins to the minikube cluster ####
+#### 1.1.6. Modify optins to the minikube cluster
 
 There are 2 optins that should be enabled:
 
@@ -194,9 +194,9 @@ The script [1.minikube-update.sh](1.minikube-update.sh) may be modified and used
 ./1.minikube-update.sh
 ```
 
-#### 1.1.7. Explore the cluster ####
+#### 1.1.7. Explore the cluster
 
-##### 1.1.7.1. Use CLI to explore cluster #####
+##### 1.1.7.1. Use CLI to explore cluster
 
 The CLI tool kubectl is used to explore and manage the cluster
 
@@ -218,7 +218,7 @@ NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   58d
 ```
 
-##### 1.1.7.2. Use GUI to explore cluster #####
+##### 1.1.7.2. Use GUI to explore cluster
 
 The GUI will run in the default web browser and you start it with:
 
@@ -226,7 +226,7 @@ The GUI will run in the default web browser and you start it with:
 minikube dashboard &
 ```
 
-#### 1.1.8. Prepare Helm to deploy software into the cluster created ####
+#### 1.1.8. Prepare Helm to deploy software into the cluster created
 
 In order for Helm to be able to install software packages into your Kubernetes cluster you need to initialize it. Run the script [2.helm-init.sh](2.helm-init.sh):
 
@@ -249,7 +249,7 @@ kubectl -n kube-system get svc tiller-deploy
 
 In this moment your Kubernetes local cluster should be up and running an ready to start deploying applications into it.
 
-#### 1.1.9. Start/Stop cluster ####
+#### 1.1.9. Start/Stop cluster
 
 >:exclamation: The cluster will be started and stopped **ONLY** using minikube CLI tool.
 >
@@ -267,7 +267,7 @@ minikube start
 minikube stop
 ```
 
-#### 1.1.10. Other minikube commands ####
+#### 1.1.10. Other minikube commands
 
 You will get all options of minikube if you run:
 
@@ -301,7 +301,7 @@ minikube ssh
 
 >:exclamation: **Do not** modify anything into the VirtualBox VM otherwise the cluster may not be usable anymore.
 
-## 2. Install Minikube on Linux ##
+## 2. Install Minikube on Linux
 
 The Minikube Kubernetes cluster will be created as a virtual machine in VirtualBox, so, make sure you have VirtualBox installed.
 
@@ -314,7 +314,7 @@ You will need 4 tools to create and manage the Minikube Kubernetes cluster:
 - helm
 - tiller
 
-### 2.1. Install Minikube ###
+### 2.1. Install Minikube
 
 Minikube is the CLI tool to create and manage the virtual machine used by Kubernetes.
 
@@ -328,7 +328,7 @@ MINIKUBELINK=https://github.com/kubernetes/minikube/releases/download/v1.3.0/min
 curl -Lo minikube $MINIKUBELINK && chmod +x minikube && mv minikube /usr/local/bin/
 ```
 
-### 2.2. Install Kubectl ###
+### 2.2. Install Kubectl
 
 Kubectl is the CLI tool to manage Kubernetes.
 
@@ -338,7 +338,7 @@ Download the Windows executable:
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl && mv kubectl /usr/local/bin/
 ```
 
-### 2.3. Install Helm and Tiller ###
+### 2.3. Install Helm and Tiller
 
 Helm is the CLI tool to install software packages that exists in Helm library. Tiller keeps track of the packages installed.
 
@@ -350,7 +350,7 @@ HELMLINK=https://get.helm.sh/helm-v2.14.3-linux-amd64.tar.gz
 curl -LO $HELMLINK && tar -xf $(basename $HELMLINK) && chmod +x linux-amd64/{helm,tiller} && mv linux-amd64/{helm,tiller} /usr/local/bin/
 ```
 
-### 2.4. Common configuration ###
+### 2.4. Common configuration
 
 For the above tools you need to set few exports and completion:
 
@@ -401,33 +401,33 @@ $ tiller version
 Ctrl+C
 ```
 
-### 2.5. Create the Kubernetes cluster with Minikube ###
+### 2.5. Create the Kubernetes cluster with Minikube
 
 Same as in the [Windows section](#115-create-the-kubernetes-cluster-with-minikube)
 
-### 2.6. Modify optins to the minikube cluster ###
+### 2.6. Modify optins to the minikube cluster
 
 Same as in the [Windows section](#116-modify-optins-to-the-minikube-cluster)
 
-### 2.7. Explore the cluster ###
+### 2.7. Explore the cluster
 
 Same as in the [Windows section](#117-explore-the-cluster)
 
-### 2.8. Prepare Helm to deploy software into the cluster created ###
+### 2.8. Prepare Helm to deploy software into the cluster created
 
 Same as in the [Windows section](#118-prepare-helm-to-deploy-software-into-the-cluster-created)
 
-### 2.9. Start/Stop cluster ###
+### 2.9. Start/Stop cluster
 
 Same as in the [Windows section](#119-startstop-cluster)
 
-### 2.10. Other minikube commands ###
+### 2.10. Other minikube commands
 
 Same as in the [Windows section](#1110-other-minikube-commands)
 
-## 3. Troubleshooting ##
+## 3. Troubleshooting
 
-### 3.1 Fix registry-creds ###
+### 3.1 Fix registry-creds
 
 You may find that Replication Controller `registry-creds` is failing to create the pod.
 
@@ -550,7 +550,7 @@ minikube addons configure registry-creds
 
 and provide all necessary elements.
 
-### 3.2 Fix nginx-ingress ###
+### 3.2 Fix nginx-ingress
 
 It is possible in minikube v1.19.0 to get the following error when you deploy an ingress component:
 
@@ -564,7 +564,7 @@ The cure for the moment is to run the following command:
 kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 ```
 
-### 3.3 Fix coredns ###
+### 3.3 Fix coredns
 
 In some cases you may need to get from a pod to an Internet address. You may discover that the external address is not accessible due to K8s DNS initial settings done by Minikube.
 
