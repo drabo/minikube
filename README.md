@@ -578,6 +578,10 @@ The configmap may look like:
 
 ```yaml
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns
+  namespace: kube-system
 data:
   Corefile: |
     .:53 {
@@ -604,14 +608,6 @@ data:
         reload
         loadbalance
     }
-kind: ConfigMap
-metadata:
-  creationTimestamp: "2022-03-13T15:36:01Z"
-  name: coredns
-  namespace: kube-system
-  resourceVersion: "118724"
-  uid: 679adb8e-37e8-43d4-9a50-5d9721e67cf5
-
 ```
 
 All you need is to change the `forward` section as follows:
